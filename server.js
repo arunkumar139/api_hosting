@@ -13,6 +13,10 @@ const db = mysql.createPool({
 // Decorate Fastify with the database connection
 fastify.decorate('db', db);
 
+fastify.register(cors, {
+    origin: '*',  // Allow all origins (you can restrict it to a specific origin)
+  });
+  
 fastify.get("/",()=>"resport api is");
 // API Route to generate a report of users
 fastify.get('/report/users', async (request, reply) => {
